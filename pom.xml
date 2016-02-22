@@ -11,7 +11,10 @@
     <properties>
         <java.version>1.8</java.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <!-- Spring -->
         <spring.version>4.2.4.RELEASE</spring.version>
+        <!-- Ehcache -->
+        <ehcache-version>2.10.1</ehcache-version>
         <!-- Test -->
         <junit.version>4.12</junit.version>
     </properties>
@@ -22,6 +25,18 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- Permet l'ajout du wrapper Spring de EhcacheManager -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache-version}</version>
+        </dependency>
+        <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

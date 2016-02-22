@@ -3,9 +3,11 @@ package com.vgalloy.spring.cache;
 import com.vgalloy.spring.cache.dao.UserDao;
 import com.vgalloy.spring.cache.model.User;
 import com.vgalloy.spring.cache.service.UserService;
+import net.sf.ehcache.config.CacheConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -28,14 +30,16 @@ public class Main {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Main.class);
-        // INIT
+
+        // Init
         UserService userService = applicationContext.getBean(UserService.class);
         UserDao userDao = applicationContext.getBean(UserDao.class);
 
-        // USER
+        // Set the user
         User user = new User();
         user.setName("Name1");
 
+        // User case
         System.out.println("Save user with service ...");
         user = userService.save(user);
 
@@ -55,8 +59,21 @@ public class Main {
 
     @Bean
     public CacheManager cacheManager() {
-        SimpleCacheManager cacheManager = new SimpleCacheManager();
-        cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache("User")));
-        return cacheManager;
+        CacheConfiguration cacheConfiguration = new CacheConfiguration();
+        cacheConfiguration.setName(UserService.CACHE_NAME);
+        cacheConfiguration.setMemoryStoreEvictionPolicy("LRU");
+        cacheConfiguration.setMaxEntriesLocalHeap(1000);
+
+        net.sf.ehcache.config.Configuration config = new net.sf.ehcache.config.Configuration();
+        config.addCache(cacheConfiguration);
+
+        return new EhCacheCacheManager(net.sf.ehcache.CacheManager.newInstance(config));
     }
+
+//    @Bean
+//    public CacheManager cacheManager() {
+//        SimpleCacheManager cacheManager = new SimpleCacheManager();
+//        cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache(UserService.CACHE_NAME)));
+//        return cacheManager;
+//    }
 }

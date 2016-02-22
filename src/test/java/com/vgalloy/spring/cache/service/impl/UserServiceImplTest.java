@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
@@ -36,6 +38,23 @@ public class UserServiceImplTest {
         defaultUser = userService.save(defaultUser);
     }
 
+    @Test
+    public void testGetAll() {
+        userService.getAll();
+        userDao.removeAll();
+
+        List<User> userList = userService.getAll();
+
+        assertEquals(userList.size(), 1);
+        assertEquals(userList.get(0), defaultUser);
+    }
+
+    @Test
+    public void testSaveNotAttach() {
+        defaultUser.setName("Name2");
+        User result = userService.getById(defaultUser.getId());
+        assertNotEquals(defaultUser, result);
+    }
 
     @Test
     public void testGetById() {
@@ -43,23 +62,31 @@ public class UserServiceImplTest {
         userDao.removeAll();
         User result2 = userService.getById(defaultUser.getId());
 
-
         assertEquals(defaultUser, result);
         assertEquals(defaultUser, result2);
     }
 
     @Test
     public void testUpdate() {
-        User getByIdResult = userService.getById(defaultUser.getId());
         defaultUser.setName("Name2");
         User updateResult = userService.update(defaultUser);
         User result2 = userService.getById(defaultUser.getId());
         User daoResult = userDao.getById(defaultUser.getId());
 
-        assertNotEquals(defaultUser, getByIdResult);
         assertEquals(defaultUser, updateResult);
         assertEquals(defaultUser, result2);
         assertEquals(defaultUser, daoResult);
+    }
+
+    @Test
+    public void testUpdateNotAttach() {
+        defaultUser.setName("Name2");
+        User result = userService.update(defaultUser);
+        result.setName("Name3");
+        User result2 = userService.getById(defaultUser.getId());
+
+        assertNotEquals(result, defaultUser);
+        assertNotEquals(result, result2);
     }
 
     @Test

@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface UserService {
 
+    String CACHE_NAME = "User";
+
     List<User> getAll();
 
     User getById(long id);

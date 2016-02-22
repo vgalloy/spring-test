@@ -15,15 +15,17 @@ import java.util.List;
 /**
  * @author Vincent Galloy
  *         Created by Vincent Galloy on 19/02/16.
+ *         /!\ Les objets utilisé
  */
 @Service
-@CacheConfig(cacheNames="User")
+@CacheConfig(cacheNames=UserService.CACHE_NAME)
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao dao;
 
     @Override
+    @Cacheable
     public List<User> getAll() {
         return dao.getAll();
     }
