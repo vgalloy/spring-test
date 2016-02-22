@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @CachePut(key="#user.id")
     public User save(User user) {
         return dao.save(user);
     }
