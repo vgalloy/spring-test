@@ -7,6 +7,7 @@ import com.vgalloy.spring.jdkproxy.service.MyService;
  *         Created by Vincent Galloy on 19/02/16.
  */
 public class MyServiceImpl implements MyService {
+
     @Override
     public int add(int a, int b) {
         return a + b;

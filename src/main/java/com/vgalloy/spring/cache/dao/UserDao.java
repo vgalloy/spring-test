@@ -9,6 +9,7 @@ import java.util.List;
  *         Created by Vincent Galloy on 19/02/16.
  */
 public interface UserDao {
+
     List<User> getAll();
 
     User getById(long id);

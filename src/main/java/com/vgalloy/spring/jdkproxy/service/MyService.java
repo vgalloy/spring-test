@@ -5,5 +5,6 @@ package com.vgalloy.spring.jdkproxy.service;
  *         Created by Vincent Galloy on 19/02/16.
  */
 public interface MyService {
+
     int add(int a, int b);
 }

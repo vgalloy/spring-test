@@ -11,6 +11,7 @@ import java.lang.reflect.Proxy;
  *         Created by Vincent Galloy on 19/02/16.
  */
 public class Main {
+
     public static void main(String[] args) {
         MyService myService = new MyServiceImpl();
 

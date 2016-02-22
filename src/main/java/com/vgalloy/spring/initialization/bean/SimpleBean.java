@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
  *         Created by Vincent Galloy on 19/02/16.
  */
 public class SimpleBean implements InitializingBean {
+
     private String value;
 
     public SimpleBean() {

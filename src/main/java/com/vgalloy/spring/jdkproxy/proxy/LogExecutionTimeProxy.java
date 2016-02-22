@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
  */
 public class LogExecutionTimeProxy implements InvocationHandler {
 
-    // The target instance
     private Object invocationTarget;
 
     public LogExecutionTimeProxy(Object invocationTarget) {
