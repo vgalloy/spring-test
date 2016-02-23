@@ -13,6 +13,6 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/spring-context.xml");
         SimpleBean simpleBean = applicationContext.getBean(SimpleBean.class);
-        System.out.println(simpleBean.getValue());
+        System.out.println(simpleBean);
     }
 }

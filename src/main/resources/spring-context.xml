@@ -5,11 +5,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- Permet d'activer les annotations @PostConstruct et @Autowired sur un attribut -->
     <context:component-scan base-package="com.vgalloy.spring.initialization"/>
-    <bean id="myBean" class="com.vgalloy.spring.initialization.bean.SimpleBean" init-method="myInit" destroy-method="myDestroy">
-        <property name="value" value="myValue"/>
+
+    <bean id="xmlVal" class="java.lang.String">
+        <constructor-arg value="xmlValue"/>
     </bean>
+
+    <bean id="myBean" class="com.vgalloy.spring.initialization.bean.SimpleBean" init-method="myInit"
+          destroy-method="myDestroy">
+        <property name="value" value="myValue"/> <!-- Equivalent à @Autowired sur le Setter de l'attribut -->
+    </bean>
+
     <bean class="com.vgalloy.spring.initialization.bean.MyPostProcessor"/>
 </beans>

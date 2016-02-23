@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
  */
 public class SimpleBean implements InitializingBean {
 
+    @Autowired
     private String value;
 
     public SimpleBean() {
@@ -41,7 +42,14 @@ public class SimpleBean implements InitializingBean {
 
     @Autowired
     public void setValue(String value) {
-        System.out.println("setValue");
+        System.out.println("setValue " + this.getValue());
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleBean{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }
