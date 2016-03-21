@@ -2,65 +2,86 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vgalloy</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>1.0-SNAPSHOT</version>
+	<groupId>com.vgalloy</groupId>
+	<artifactId>spring-test</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<modules>
+		<module>cache</module>
+		<module>jdkproxy</module>
+		<module>initialization</module>
+	</modules>
+	<packaging>pom</packaging>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <!-- Spring -->
-        <spring.version>4.2.4.RELEASE</spring.version>
-        <!-- Ehcache -->
-        <ehcache-version>2.10.1</ehcache-version>
-        <!-- Test -->
-        <junit.version>4.12</junit.version>
-    </properties>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+		<!-- Spring -->
+		<spring.version>4.2.4.RELEASE</spring.version>
+		<spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
+		<!-- Ehcache -->
+		<ehcache.version>2.10.1</ehcache.version>
+		<persistence-api.version>1.0.2</persistence-api.version>
+		<!-- Test -->
+		<junit.version>4.12</junit.version>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <!-- Permet l'ajout du wrapper Spring de EhcacheManager -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>${ehcache-version}</version>
-        </dependency>
-        <!-- Test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- Permet l'ajout du wrapper Spring de EhcacheManager -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data-jpa.version}</version>
+			</dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+			<!-- Test -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>${persistence-api.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
