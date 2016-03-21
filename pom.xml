@@ -9,8 +9,9 @@
 	<version>1.0-SNAPSHOT</version>
 	<modules>
 		<module>cache</module>
-		<module>jdkproxy</module>
+		<module>datajpa</module>
 		<module>initialization</module>
+		<module>jdkproxy</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -23,6 +24,9 @@
 		<!-- Ehcache -->
 		<ehcache.version>2.10.1</ehcache.version>
 		<persistence-api.version>1.0.2</persistence-api.version>
+		<!-- Hibernate -->
+		<mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+		<hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
 		<!-- Test -->
 		<junit.version>4.12</junit.version>
 	</properties>
@@ -67,6 +71,16 @@
 				<groupId>javax.persistence</groupId>
 				<artifactId>persistence-api</artifactId>
 				<version>${persistence-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate-entitymanager.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
