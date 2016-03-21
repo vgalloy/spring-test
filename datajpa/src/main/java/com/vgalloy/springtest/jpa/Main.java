@@ -3,8 +3,6 @@ package com.vgalloy.springtest.jpa;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import java.util.Properties;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -42,7 +40,7 @@ public class Main {
 	}
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws ClassNotFoundException {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setJpaVendorAdapter(vendorAdapter);
@@ -60,11 +58,10 @@ public class Main {
 		return dataSource;
 	}
 
-	 @Bean
-   public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
-      JpaTransactionManager transactionManager = new JpaTransactionManager();
-      transactionManager.setEntityManagerFactory(emf);
-
-      return transactionManager;
-   }
+	@Bean
+	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
+		return transactionManager;
+	}
 }
