@@ -44,7 +44,6 @@ public class Main {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws ClassNotFoundException {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-		emf.setJpaProperties(additionalProperties());
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setJpaVendorAdapter(vendorAdapter);
 		emf.setDataSource(dataSource());
@@ -68,15 +67,4 @@ public class Main {
 
       return transactionManager;
    }
-
-	Properties additionalProperties() {
-      Properties properties = new Properties();
-//      properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		properties.setProperty("hibernate.connection.username", "root");
-		properties.setProperty("hibernate.connection.password", "password");
-		properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/test");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-      return properties;
-   }
-
 }
