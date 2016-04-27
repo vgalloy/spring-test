@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     <persistence-unit name="User">
-        <class>com.vgalloy.springtest.jpa.entity.User</class>
+        <class>com.vgalloy.springtest.datajpa.entity.User</class>
         <properties>
 	        <property name="hibernate.id.new_generator_mappings" value="false"/>
             <!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>-->
