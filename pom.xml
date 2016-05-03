@@ -13,6 +13,7 @@
         <module>initialization</module>
         <module>jdkproxy</module>
         <module>datarest</module>
+        <module>boot</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -24,7 +25,6 @@
         <spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
         <!-- Ehcache -->
         <ehcache.version>2.10.1</ehcache.version>
-        <persistence-api.version>1.0.2</persistence-api.version>
         <!-- Hibernate -->
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
@@ -69,11 +69,6 @@
             </dependency>
 
             <!-- JPA + hibernate -->
-            <dependency>
-                <groupId>javax.persistence</groupId>
-                <artifactId>persistence-api</artifactId>
-                <version>${persistence-api.version}</version>
-            </dependency>
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
