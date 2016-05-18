@@ -1,7 +1,9 @@
 package com.vgalloy.springtest.boot.main;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.vgalloy.springtest.boot.api.service.Service;
 /**
  * Created by Vincent Galloy on 02/05/16.
  */
@@ -9,6 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MainConfiguration {
 
     public static void main(String[] args) {
-        SpringApplication.run(MainConfiguration.class, args);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfiguration.class);
+        Service service = context.getBean(Service.class);
+        System.out.println(service.getName());
+        //        SpringApplication.run(MainConfiguration.class, args);
     }
 }
