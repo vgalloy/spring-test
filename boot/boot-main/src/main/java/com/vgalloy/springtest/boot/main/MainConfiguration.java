@@ -4,7 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.vgalloy.springtest.boot.api.service.Service;
+
 /**
+ * @author Vincent Galloy
  * Created by Vincent Galloy on 02/05/16.
  */
 @SpringBootApplication
