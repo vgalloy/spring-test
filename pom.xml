@@ -15,6 +15,7 @@
         <module>datarest</module>
         <module>boot</module>
         <module>rmi</module>
+        <module>spring-boot</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -16,6 +16,5 @@ public class MainConfiguration {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfiguration.class);
         Service service = context.getBean(Service.class);
         System.out.println(service.getName());
-        //        SpringApplication.run(MainConfiguration.class, args);
     }
 }

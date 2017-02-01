@@ -20,11 +20,11 @@
         </dependency>
         <dependency>
             <groupId>com.vgalloy</groupId>
-            <artifactId>boot-add</artifactId>
+            <artifactId>boot-mul</artifactId>
         </dependency>
         <dependency>
             <groupId>com.vgalloy</groupId>
-            <artifactId>boot-mul</artifactId>
+            <artifactId>boot-add</artifactId>
         </dependency>
     </dependencies>
 
