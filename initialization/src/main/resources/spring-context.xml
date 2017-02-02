@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Permet d'activer les annotations @PostConstruct et @Autowired sur un attribut -->
-    <context:component-scan base-package="com.vgalloy.springtest.initialization"/>
+    <context:component-scan base-package="com.vgalloy.springtest.initialization.bean"/>
 
     <bean id="xmlVal" class="java.lang.String">
         <constructor-arg value="xmlValue"/>
