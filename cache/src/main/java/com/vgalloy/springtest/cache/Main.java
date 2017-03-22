@@ -1,32 +1,26 @@
 package com.vgalloy.springtest.cache;
 
 
-import net.sf.ehcache.config.CacheConfiguration;
-
 import java.util.Arrays;
 
+import com.vgalloy.springtest.cache.dao.UserDao;
+import com.vgalloy.springtest.cache.model.User;
+import com.vgalloy.springtest.cache.service.UserService;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
-
-import com.vgalloy.springtest.cache.dao.UserDao;
-import com.vgalloy.springtest.cache.model.User;
-import com.vgalloy.springtest.cache.service.UserService;
 
 /**
  * @author Vincent Galloy
  *         Created by Vincent Galloy on 19/02/16.
  */
 @EnableCaching
-@Component
 @ComponentScan
 @Configuration
 public class Main {

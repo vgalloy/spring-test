@@ -24,22 +24,20 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getById(long id) {
-        for (User user : userList) {
-            if (user.getId() == id) {
-                return user;
-            }
-        }
-        return null;
+        return userList.stream()
+                .filter(user -> user.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public User save(User user) {
-        long newIndex = 1;
-        for (User userTmp : userList) {
-            if(userTmp.getId() >= newIndex) {
-                newIndex = userTmp.getId() + 1;
-            }
-        }
+        long newIndex = userList.stream()
+                .map(User::getId)
+                .max(Long::compareTo)
+                .map(e -> e + 1)
+                .orElse(1L);
+
         user.setId(newIndex);
         userList.add(user.clone());
         return user;

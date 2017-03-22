@@ -1,17 +1,16 @@
 package com.vgalloy.springtest.cache.dao.impl;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import java.util.ArrayList;
 
 import com.vgalloy.springtest.cache.Main;
 import com.vgalloy.springtest.cache.dao.UserDao;
 import com.vgalloy.springtest.cache.model.User;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,7 +18,7 @@ import static org.junit.Assert.assertEquals;
  * @author Vincent Galloy
  *         Created by Vincent Galloy on 19/02/16.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = Main.class)
 public class UserDaoImplTest {
 
